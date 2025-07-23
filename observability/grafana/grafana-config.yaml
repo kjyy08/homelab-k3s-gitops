@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-config
+  namespace: observability
+data:
+  grafana.ini: |
+    [server]
+    http_port = 3000
+    domain = grafana.luigi99.cloud
+    root_url = https://grafana.luigi99.cloud
+    
+    [security]
+    disable_initial_admin_creation = false
+    
+    [users]
+    allow_sign_up = false
+    allow_org_create = false
+    
+    [auth]
+    disable_login_form = false
+    
+    [log]
+    mode = console
+    level = info
+    
+    [analytics]
+    reporting_enabled = false
+    check_for_updates = false
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-datasources
+  namespace: observability
+data:
+  datasources.yaml: |-
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        access: proxy
+        url: http://prometheus:9090
+        isDefault: true
+      - name: Loki
+        type: loki
+        access: proxy
+        url: http://loki:3100
+      - name: Tempo
+        type: tempo
+        access: proxy
+        url: http://tempo:3200

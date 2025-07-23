@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: n8n-config
+  namespace: automation
+data:
+  N8N_BASIC_AUTH_ACTIVE: "true"
+  N8N_HOST: "n8n.luigi99.cloud"
+  N8N_PROTOCOL: "https"
+  WEBHOOK_URL: "https://n8n.luigi99.cloud"
+  GENERIC_TIMEZONE: "Asia/Seoul"

@@ -7,4 +7,4 @@ resources:
   - namespace.yaml
   - n8n/n8n.yaml
   - n8n/secret.yaml
-  - n8n/config.yaml
+  - n8n/n8n-config.yaml

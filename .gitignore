@@ -7,9 +7,8 @@ gen
 # env
 .env
 
-# Kubernetes config, secret
-**/config.yaml
-**/secret.yaml
+# Kubernetes secret
+*secret.yaml
 
 # Temporary files
 *.tmp
