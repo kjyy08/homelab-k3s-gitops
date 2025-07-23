@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: n8n
+  namespace: automation
+spec:
+  serviceName: n8n
+  replicas: 1
+  selector:
+    matchLabels:
+      app: n8n
+  template:
+    metadata:
+      labels:
+        app: n8n
+    spec:
+      containers:
+      - name: n8n
+        image: n8nio/n8n:latest
+        ports:
+        - containerPort: 5678
+        env:
+        - name: N8N_BASIC_AUTH_USER
+          valueFrom:
+            secretKeyRef:
+              name: n8n-secret
+              key: N8N_BASIC_AUTH_USER
+        - name: N8N_BASIC_AUTH_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: n8n-secret
+              key: N8N_BASIC_AUTH_PASSWORD
+        envFrom:
+        - configMapRef:
+            name: n8n-config
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        volumeMounts:
+        - name: n8n-storage
+          mountPath: /home/node/.n8n
+  volumeClaimTemplates:
+  - metadata:
+      name: n8n-storage
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      storageClassName: bulk-hdd
+      resources:
+        requests:
+          storage: 10Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: n8n
+  namespace: automation
+spec:
+  selector:
+    app: n8n
+  type: ClusterIP
+  ports:
+  - port: 5678
+    targetPort: 5678

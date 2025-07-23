@@ -1,0 +1,21 @@
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+
+# env
+.env
+
+# Kubernetes config, secret
+**/config.yaml
+**/secret.yaml
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
