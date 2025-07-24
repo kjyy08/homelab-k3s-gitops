@@ -5,13 +5,10 @@ metadata:
   namespace: kube-system
 spec:
   valuesContent: |-
-    certificatesResolvers:
-      letsencrypt:
-        acme:
-          email: kjyy08@gmail.com
-          storage: /data/acme.json
-          httpChallenge:
-            entryPoint: web
+    additionalArguments:
+      - "--certificatesresolvers.letsencrypt.acme.email=kjyy08@gmail.com"
+      - "--certificatesresolvers.letsencrypt.acme.storage=/data/acme.json"
+      - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
     
     logs:
       general:
