@@ -4,8 +4,18 @@ metadata:
   name: n8n-config
   namespace: automation
 data:
+  N8N_PORT: "5678"
   N8N_BASIC_AUTH_ACTIVE: "true"
   N8N_HOST: "n8n.luigi99.cloud"
   N8N_PROTOCOL: "https"
   WEBHOOK_URL: "https://n8n.luigi99.cloud"
   GENERIC_TIMEZONE: "Asia/Seoul"
+  NODE_ENV: "production"
+  N8N_EMAIL_MODE: "smtp"
+  N8N_SMTP_HOST: "smtp.gmail.com"
+  N8N_SMTP_PORT: "587"
+  N8N_SMTP_SSL: "false"
+  N8N_SMTP_STARTTLS: "true"
+  N8N_DEFAULT_LOCALE: "ko"
+  N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: "true"
+  N8N_RUNNERS_ENABLED: "true"
