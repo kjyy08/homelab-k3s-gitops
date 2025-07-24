@@ -2,11 +2,6 @@
 
 이 리포지토리는 홈랩 K3s 클러스터의 전체 인프라를 GitOps 방식으로 관리합니다.
 
-## 접근 가능한 서비스
-- **ArgoCD**: https://argocd.luigi99.cloud
-- **Grafana**: https://grafana.luigi99.cloud  
-- **n8n**: https://n8n.luigi99.cloud
-
 ## 아키텍처
 
 ### 프로젝트 구성
