@@ -46,7 +46,7 @@ spec:
       name: prometheus-storage-volume
     spec:
       accessModes: ["ReadWriteOnce"]
-      storageClassName: fast-ssd
+      storageClassName: bulk-hdd
       resources:
         requests:
           storage: 10Gi

@@ -1,25 +1,16 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
 metadata:
-  name: n8n-ingress
+  name: n8n
   namespace: automation
-  annotations:
-    kubernetes.io/ingress.class: "nginx"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`n8n.luigi99.cloud`)
+      kind: Rule
+      services:
+        - name: n8n
+          port: 5678
   tls:
-  - hosts:
-    - n8n.luigi99.cloud
-    secretName: n8n-tls
-  rules:
-  - host: n8n.luigi99.cloud
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: n8n
-            port:
-              number: 5678
+    certResolver: letsencrypt

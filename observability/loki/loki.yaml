@@ -20,7 +20,7 @@ spec:
         ports:
         - containerPort: 3100
         args:
-          - "-config.file=/etc/loki/local-n8n-grafana-config.yaml"
+          - "-config.file=/etc/loki/loki-config.yaml"
         resources:
           requests:
             memory: "512Mi"

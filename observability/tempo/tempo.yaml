@@ -44,7 +44,7 @@ spec:
       name: tempo-storage
     spec:
       accessModes: ["ReadWriteOnce"]
-      storageClassName: fast-ssd
+      storageClassName: bulk-hdd
       resources:
         requests:
           storage: 5Gi

@@ -1,16 +1,17 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: grafana
-  namespace: observability
+  name: argocd-server
+  namespace: argocd
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`grafana.luigi99.cloud`)
+    - match: Host(`deploy.luigi99.cloud`)
       kind: Rule
       services:
-        - name: grafana
-          port: 3000
+        - name: argocd-server
+          port: 443
+          scheme: https
   tls:
     certResolver: letsencrypt

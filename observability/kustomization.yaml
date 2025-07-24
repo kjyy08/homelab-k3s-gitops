@@ -5,6 +5,7 @@ namespace: observability
 
 resources:
   - namespace.yaml
+  - grafana/secret.yaml
   - grafana/grafana-config.yaml
   - grafana/grafana.yaml
   - prometheus/prometheus-config.yaml
