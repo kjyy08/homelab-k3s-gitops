@@ -20,10 +20,10 @@ data:
         resource_to_telemetry_conversion:
           enabled: true
     
-      loki:
+      otlphttp/loki:
         endpoint: http://loki:3100/otlp
     
-      tempo:
+      otlphttp/tempo:
         endpoint: http://tempo:4318
     
     extensions:
@@ -36,7 +36,7 @@ data:
         traces:
           receivers: [otlp]
           processors: [batch]
-          exporters: [tempo]
+          exporters: [otlphttp/tempo]
         metrics:
           receivers: [otlp]
           processors: [batch]
@@ -44,4 +44,4 @@ data:
         logs:
           receivers: [otlp]
           processors: [batch]
-          exporters: [loki]
+          exporters: [otlphttp/loki]
