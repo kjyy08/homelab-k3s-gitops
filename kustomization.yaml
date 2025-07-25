@@ -3,9 +3,9 @@ kind: Kustomization
 
 resources:
   - core/storage
-  - core/traefik
   - core/ingress
-  
+  - core/cert-manager
+
   - bootstrap/argocd
   
   - observability

@@ -1,24 +1,26 @@
-apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   name: grafana
   namespace: observability
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
-  entryPoints:
-    - websecure
-  routes:
-    - match: Host(`grafana.luigi99.cloud`)
-      kind: Rule
-      services:
-        - name: grafana
-          port: 3000
+  ingressClassName: nginx
   tls:
-    certResolver: letsencrypt
----
-apiVersion: traefik.io/v1alpha1
-kind: ServersTransport
-metadata:
-  name: grafana-transport
-  namespace: observability
-spec:
-  insecureSkipVerify: true
+  - hosts:
+    - grafana.luigi99.cloud
+    secretName: grafana-tls
+  rules:
+  - host: grafana.luigi99.cloud
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: grafana
+            port:
+              number: 3000
