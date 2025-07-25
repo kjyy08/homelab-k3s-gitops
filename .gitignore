@@ -9,7 +9,6 @@ gen
 
 # Kubernetes resources
 *secret.yaml
-core/storage/**
 
 # Temporary files
 *.tmp
