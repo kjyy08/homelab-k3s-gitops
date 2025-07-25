@@ -20,16 +20,21 @@ spec:
         ports:
         - containerPort: 5678
         env:
-        - name: N8N_BASIC_AUTH_USER
+        - name: N8N_SMTP_USER
           valueFrom:
             secretKeyRef:
               name: n8n-secret
-              key: N8N_BASIC_AUTH_USER
-        - name: N8N_BASIC_AUTH_PASSWORD
+              key: N8N_SMTP_USER
+        - name: N8N_SMTP_PASS
           valueFrom:
             secretKeyRef:
               name: n8n-secret
-              key: N8N_BASIC_AUTH_PASSWORD
+              key: N8N_SMTP_PASS
+        - name: N8N_SMTP_SENDER
+          valueFrom:
+            secretKeyRef:
+              name: n8n-secret
+              key: N8N_SMTP_SENDER
         envFrom:
         - configMapRef:
             name: n8n-config
