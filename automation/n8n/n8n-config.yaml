@@ -6,9 +6,9 @@ metadata:
 data:
   N8N_PORT: "5678"
   N8N_BASIC_AUTH_ACTIVE: "true"
-  N8N_HOST: "n8n.luigi99.cloud"
+  N8N_HOST: "workflow.luigi99.cloud"
   N8N_PROTOCOL: "https"
-  WEBHOOK_URL: "https://n8n.luigi99.cloud"
+  WEBHOOK_URL: "https://workflow.luigi99.cloud"
   GENERIC_TIMEZONE: "Asia/Seoul"
   NODE_ENV: "production"
   N8N_EMAIL_MODE: "smtp"
