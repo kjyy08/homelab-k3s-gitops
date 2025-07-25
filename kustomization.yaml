@@ -5,9 +5,5 @@ resources:
   - core/storage
   - core/ingress
   - core/cert-manager
-
-  - bootstrap/argocd
-  
   - observability
-  
   - automation
