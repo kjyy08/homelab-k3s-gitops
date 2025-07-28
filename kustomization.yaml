@@ -5,5 +5,6 @@ resources:
   - core/storage
   - core/ingress
   - core/cert-manager
-  - observability
-  - automation
+  - applications/observability
+  - applications/automation
+  - applications/wiki

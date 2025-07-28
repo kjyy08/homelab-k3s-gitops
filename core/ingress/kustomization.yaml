@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - grafana-ingress.yaml
   - n8n-ingress.yaml
+  - bookstack-ingress.yaml

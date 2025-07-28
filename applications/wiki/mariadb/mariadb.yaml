@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: bookstack-mariadb
+  namespace: wiki
+spec:
+  serviceName: bookstack-mariadb
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bookstack-mariadb
+  template:
+    metadata:
+      labels:
+        app: bookstack-mariadb
+    spec:
+      containers:
+      - name: mariadb
+        image: lscr.io/linuxserver/mariadb:11.4.4
+        ports:
+        - containerPort: 3306
+        envFrom:
+          - secretRef:
+              name: bookstack-secret
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        volumeMounts:
+        - name: bookstack-mariadb-storage
+          mountPath: /var/lib/mysql
+  volumeClaimTemplates:
+  - metadata:
+      name: bookstack-mariadb-storage
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      storageClassName: bulk-hdd
+      resources:
+        requests:
+          storage: 10Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bookstack-mariadb
+  namespace: wiki
+spec:
+  selector:
+    app: bookstack-mariadb
+  type: ClusterIP
+  ports:
+  - port: 3307
+    targetPort: 3306
