@@ -7,6 +7,7 @@ resources:
   - namespace.yaml
   - grafana/grafana-config.yaml
   - grafana/grafana.yaml
+  - prometheus/prometheus-rbac.yaml
   - prometheus/prometheus-config.yaml
   - prometheus/prometheus.yaml
   - loki/loki-config.yaml
