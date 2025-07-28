@@ -6,7 +6,7 @@ metadata:
 data:
   TZ: "Asia/Seoul"
   APP_URL: "https://wiki.luigi99.cloud"
-  DB_HOST: "http://bookstack-mariadb.wiki:3307"
+  DB_HOST: "bookstack-mariadb"
   DB_PORT: "3307"
   DB_DATABASE: "bookstack"
   DB_USERNAME: "bookstack"
