@@ -16,3 +16,4 @@ resources:
   - otel-collector/otlp-collector-config.yaml
   - otel-collector/otel-collector.yaml
   - node-exporter/node-exporter.yaml
+  - kube-state-metrics/kube-state-metrics.yaml
