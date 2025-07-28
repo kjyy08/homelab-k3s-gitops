@@ -14,3 +14,5 @@ data:
   MAIL_HOST: "smtp.gmail.com"
   MAIL_PORT: "587"
   MAIL_ENCRYPTION: "tls"
+  EXPORT_PDF_COMMAND: "weasyprint {input_html_path} {output_pdf_path}"
+  ALLOW_UNTRUSTED_SERVER_FETCHING: "true"
