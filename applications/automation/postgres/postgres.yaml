@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: postgres
+  name: n8n-postgresql
   namespace: automation
 spec:
   serviceName: "postgres"
   replicas: 1
   selector:
     matchLabels:
-      app: postgres
+      app: n8n-postgresql
   template:
     metadata:
       labels:
-        app: postgres
+        app: n8n-postgresql
     spec:
       containers:
         - name: postgres
@@ -23,24 +23,24 @@ spec:
             - name: POSTGRES_DB
               valueFrom:
                 secretKeyRef:
-                  name: postgres-secret
+                  name: n8n-postgresql-secret
                   key: POSTGRES_DB
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
-                  name: postgres-secret
+                  name: n8n-postgresql-secret
                   key: POSTGRES_USER
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: postgres-secret
+                  name: n8n-postgresql-secret
                   key: POSTGRES_PASSWORD
           volumeMounts:
-            - name: postgres-storage
+            - name: n8n-postgresql-storage
               mountPath: /var/lib/postgresql/data
   volumeClaimTemplates:
     - metadata:
-        name: n8n-postgres-storage
+        name: n8n-postgresql-storage
       spec:
         accessModes: ["ReadWriteOnce"]
         storageClassName: bulk-hdd
@@ -52,11 +52,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgres
+  name: n8n-postgresql
   namespace: automation
 spec:
   selector:
-    app: postgres
+    app: n8n-postgresql
   type: ClusterIP
   ports:
     - port: 5432
