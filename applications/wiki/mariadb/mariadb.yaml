@@ -37,7 +37,7 @@ spec:
       name: bookstack-mariadb-storage
     spec:
       accessModes: ["ReadWriteOnce"]
-      storageClassName: bulk-hdd
+      storageClassName: longhorn
       resources:
         requests:
           storage: 20Gi

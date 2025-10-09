@@ -19,3 +19,6 @@ argocd-ingress.yaml
 # OS files
 .DS_Store
 Thumbs.db
+
+# Claude Code
+.claude/settings.local.json

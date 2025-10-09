@@ -47,7 +47,7 @@ spec:
       name: prometheus-storage-volume
     spec:
       accessModes: ["ReadWriteOnce"]
-      storageClassName: bulk-hdd
+      storageClassName: longhorn
       resources:
         requests:
           storage: 10Gi
