@@ -14,6 +14,8 @@ spec:
       labels:
         app: n8n-postgresql
     spec:
+      securityContext:
+        fsGroup: 999
       containers:
         - name: postgres
           image: pgvector/pgvector:pg16
@@ -38,6 +40,7 @@ spec:
           volumeMounts:
             - name: n8n-postgresql-storage
               mountPath: /var/lib/postgresql/data
+              subPath: pgdata
   volumeClaimTemplates:
     - metadata:
         name: n8n-postgresql-storage
