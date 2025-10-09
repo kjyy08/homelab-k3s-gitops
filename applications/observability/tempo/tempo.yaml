@@ -14,6 +14,8 @@ spec:
       labels:
         app: tempo
     spec:
+      securityContext:
+        fsGroup: 10001
       containers:
       - name: tempo
         image: grafana/tempo:latest
