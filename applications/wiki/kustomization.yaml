@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: wiki
 
 resources:
+  - namespace.yaml
   - mariadb/mariadb.yaml
   - bookstack/bookstack-config.yaml
   - bookstack/bookstack.yaml

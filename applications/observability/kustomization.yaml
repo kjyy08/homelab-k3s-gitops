@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: observability
 
 resources:
+  - namespace.yaml
   - grafana/grafana-config.yaml
   - grafana/grafana.yaml
   - prometheus/prometheus-rbac.yaml
