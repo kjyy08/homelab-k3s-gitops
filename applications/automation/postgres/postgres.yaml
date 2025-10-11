@@ -23,20 +23,11 @@ spec:
             - containerPort: 5432
           env:
             - name: POSTGRES_DB
-              valueFrom:
-                secretKeyRef:
-                  name: n8n-postgresql-secret
-                  key: POSTGRES_DB
+              value: n8n
             - name: POSTGRES_USER
-              valueFrom:
-                secretKeyRef:
-                  name: n8n-postgresql-secret
-                  key: POSTGRES_USER
+              value: n8n
             - name: POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: n8n-postgresql-secret
-                  key: POSTGRES_PASSWORD
+              value: n8n
           volumeMounts:
             - name: n8n-postgresql-storage
               mountPath: /var/lib/postgresql/data
